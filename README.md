@@ -106,7 +106,9 @@ src/
 |---------|-------------|
 | `npm run dev` | Start development server |
 | `npm run build` | Build for production |
-| `npm run preview` | Preview production build locally |
+| `npm run preview` | Preview production build locally (static only, no proxy functions) |
+| `npm run serve` | Serve `dist/` with the Netlify functions emulated (Replicate works locally) |
+| `npm run start` | Build, then `serve` |
 
 ## Building for Production
 
@@ -115,6 +117,23 @@ npm run build
 ```
 
 The output will be in the `dist/` directory.
+
+### Running the production build locally
+
+The Replicate provider and the YouTube remix fallback go through two Netlify
+functions (`netlify/functions/`). `serve.mjs` is a zero-dependency Node server
+that serves `dist/` and emulates both functions, so the full app works on your
+machine without Netlify:
+
+```bash
+npm run start          # build + serve
+# or, if dist/ already exists
+npm run serve
+```
+
+Then open <http://localhost:8788/app/>. Set `PORT` / `HOST` to change the bind
+address. API keys are still entered in the app's settings modal and stay in
+your browser's localStorage.
 
 ### Deployment
 

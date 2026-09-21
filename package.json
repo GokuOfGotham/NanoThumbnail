@@ -7,7 +7,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "serve": "node serve.mjs",
+    "start": "astro build && node serve.mjs"
   },
   "dependencies": {
     "astro": "^5.0.0",
